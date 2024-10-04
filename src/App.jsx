@@ -12,14 +12,14 @@ function App() {
     },
     {
       id: 2,
-      title: "Estudar Programação",
-      descripition: "Estudar sobre React",
+      title: "Estudar Inglês",
+      descripition: "Estudar sobre verbos",
       completed: false,
     },
     {
       id: 3,
-      title: "Estudar Programação",
-      descripition: "Estudar sobre React",
+      title: "Estudar Matematica",
+      descripition: "Estudar sobre Lógica de Programação",
       completed: false,
     },
   ]);
