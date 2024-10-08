@@ -45,13 +45,25 @@ function App() {
     setTasks(deleteTasks);
   }
 
+  function onAddTaskSubmit(title, descripition) {
+    const submitTask = {
+      id: tasks.length + 1,
+      title,
+      //  utilize short hand sintex, pois o nome da propriedade é o mesmo do parametro
+      // vc pode deixar só title, e só descripition
+      descripition,
+      Iscompleted: false,
+    };
+    setTasks([...tasks, submitTask]);
+  }
+
   return (
     <div className="w-screen h-screen bg-slate-500 flex justify-center p-6 ">
       <div className="w-[500px] space-y-4">
         <h1 className="text-slate-100 text-3xl font-bold text-center">
           Gerenciador de Tarefas
         </h1>
-        <AddTask />
+        <AddTask onAddTaskSubmit={onAddTaskSubmit} />
         <Tasks
           tasks={tasks}
           onTaskClick={onTaskClick}
