@@ -47,16 +47,16 @@ function App() {
 
   return (
     <div className="w-screen h-screen bg-slate-500 flex justify-center p-6 ">
-      <div>
+      <div className="w-[500px] space-y-4">
         <h1 className="text-slate-100 text-3xl font-bold text-center">
           Gerenciador de Tarefas
         </h1>
+        <AddTask />
         <Tasks
           tasks={tasks}
           onTaskClick={onTaskClick}
           onClickDelete={onClickDelete}
         />
-        <AddTask />
       </div>
     </div>
   );
