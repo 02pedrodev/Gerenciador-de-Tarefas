@@ -8,19 +8,19 @@ function App() {
     {
       id: 1,
       title: "Estudar Programação",
-      descripition: "Estudar sobre React",
+      description: "Estudar sobre React",
       Iscompleted: false,
     },
     {
       id: 2,
       title: "Estudar Inglês",
-      descripition: "Estudar sobre verbos",
+      description: "Estudar sobre verbos",
       Iscompleted: false,
     },
     {
       id: 3,
       title: "Estudar Matematica",
-      descripition: "Estudar sobre Lógica de Programação",
+      description: "Estudar sobre Lógica de Programação",
       Iscompleted: false,
     },
   ]);
@@ -46,13 +46,13 @@ function App() {
     setTasks(deleteTasks);
   }
 
-  function onAddTaskSubmit(title, descripition) {
+  function onAddTaskSubmit(title, description) {
     const submitTask = {
       id: v4(),
       title,
       //  utilize short hand sintex, pois o nome da propriedade é o mesmo do parametro
-      // vc pode deixar só title, e só descripition
-      descripition,
+      // vc pode deixar só title, e só description
+      description: description,
       Iscompleted: false,
     };
     setTasks([...tasks, submitTask]);
