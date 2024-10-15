@@ -1,6 +1,5 @@
 import { ChevronRightIcon, TrashIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
 // ao inves de colocar props dentro da funÇÃO 'tasks', chamei diretamente cada Uma,
 // através do javascript, isso se chama destructure
 function Tasks({ tasks, onTaskClick, onClickDelete }) {

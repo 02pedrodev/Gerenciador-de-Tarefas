@@ -1,5 +1,6 @@
 import { ChevronLeftIcon } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import Title from "../components/Title";
 //  aqui eu passo query params para minha url e mudo a pagina
 // /task?title=pedro&description=naosei    esse foi o usado como exemplo
 function TaskPage() {
@@ -23,9 +24,7 @@ function TaskPage() {
           >
             <ChevronLeftIcon />
           </button>
-          <h1 className="text-slate-100 text-3xl font-bold text-center">
-            Detalhes da Tarefa
-          </h1>
+          <Title> Detalhes da Tarefa </Title>
         </div>
 
         <div className="bg-slate-400 p-4 rounded-md">
