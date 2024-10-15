@@ -1,30 +1,56 @@
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Estudar Programação",
-      description: "Estudar sobre React",
-      Iscompleted: false,
-    },
-    {
-      id: 2,
-      title: "Estudar Inglês",
-      description: "Estudar sobre verbos",
-      Iscompleted: false,
-    },
-    {
-      id: 3,
-      title: "Estudar Matematica",
-      description: "Estudar sobre Lógica de Programação",
-      Iscompleted: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState(
+    //esse localStorage faz com que mesmo que a pagina seja recarregada o conteudo persista.
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
+
+  //  esse useEffect executa essa primeira função sempre que algum valor
+  // que eu colocar dentro da lista que esta no colchetes for alterado
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks)); //isso aqui converte a lista para string/
+  }, [tasks]);
+
+  // quando vc cria um useEffect com [] vazio, essa função só é utilizada uma vez
+  // que é na primeira vez que o usuario entrar no seu site.
+
+  // useEffect(() => {
+  //   const fetchTasks = async () => {
+  //     // CHAMAR A API
+  //     const response = await fetch(
+  //       "https://jsonplaceholder.typicode.com/todos?_limit=10",
+  //       {
+  //         method: "GET",
+  //       }
+  //     );
+
+  //     // PEGAR OS DADOS QUE ELA RETORNA
+  //     const data = await response.json();
+  //     console.log (data);
+  //     //ARMAZENAR/PERSISTIR ESSES DADOS NO STATE
+  //     setTasks(data);
+  //   };
+  // }, []);
+
   // //  Recebeu taskId para identificar qual tarefa foi clicada
+  useEffect(() => {
+    async function fetchTasks() {
+      //CHAMAR A API
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/todos?_limit=10"
+      );
+      // PEGAR OS DADOS QUE ELA RETORNA
+      const data = await response.json();
+      setTasks(data);
+    }
+    // ARMAZENAR/PERSISITR ESSES DADOS NO STATE
+    fetchTasks();
+  }, []);
+
   function onTaskClick(taskId) {
     const newTasks = tasks.map((task) => {
       // PRECISO ATUALIZAR ESSA TAREFA
